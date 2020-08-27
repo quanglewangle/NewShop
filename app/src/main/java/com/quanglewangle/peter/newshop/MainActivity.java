@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import static com.quanglewangle.peter.newshop.MainActivity.PlaceholderFragment.*;
+
 public class MainActivity extends AppCompatActivity {
 
     /**
@@ -115,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-      //      textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+           // textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
 
@@ -124,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             super.setUserVisibleHint(isVisibleToUser);
             if (isVisibleToUser) {
                 // Refresh your fragment here
-                Log.i("setUserVisibleHint:", "called");
+                Log.i("setUserVisibleHint:", "called"+getArguments().getInt(ARG_SECTION_NUMBER));
             }
         }
     }
@@ -140,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            return newInstance(position + 1);
         }
 
         @Override
